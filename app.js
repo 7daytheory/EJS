@@ -6,11 +6,12 @@ const app = express();
 
 app.get("/", (req, res) => {
   var today = new Date();
-  if(today.getDay() === 7 || today.getDay() === 7) // Sat is 7 - Sunday is 0
+  var day = today.getDay();
+  if(day === 7 || day === 0) // Sat is 7 - Sunday is 0
   {
-    res.send("No! It's a weekend");
+    res.sendFile(__dirname + '/weekend.html');
   } else {
-    res.send("Its a weekend!");
+    res.sendFile(__dirname + '/weekday.html');
   }
 })
 
