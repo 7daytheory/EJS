@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
       console.log("Error: Day value cannot be found");
   }
 
-  res.render('players', 
+  res.render('lists', 
   {
     currentDay: currentDay
   });
