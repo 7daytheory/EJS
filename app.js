@@ -1,10 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const port = 3000;
-
 const app = express();
 
+let item = "";
+let items = [];
+
 app.set('view engine', 'ejs');
+
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", (req, res) => {
   const today = new Date();
@@ -17,10 +21,19 @@ app.get("/", (req, res) => {
 
   const currentDay = today.toLocaleDateString("en-US", options);
 
-  res.render('lists', 
+  res.render("list", 
   {
-    currentDay: currentDay
+    currentDay: currentDay,
+    newlistItem: items
   });
+})
+
+app.post("/", (req, res) => {
+  item = req.body.newItem;
+
+  items.push(item);
+
+  res.redirect("/");
 })
 
 app.listen(port, () => {
