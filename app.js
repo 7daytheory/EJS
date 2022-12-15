@@ -4,14 +4,19 @@ const port = 3000;
 
 const app = express();
 
+app.set('view engine', 'ejs');
+
 app.get("/", (req, res) => {
   var today = new Date();
   var day = today.getDay();
+  let currentDay = "";
   if(day === 7 || day === 0) // Sat is 7 - Sunday is 0
   {
-    res.sendFile(__dirname + '/weekend.html');
+    currentDay = "Weekend";
+    res.render('players', {dayValue: currentDay});
   } else {
-    res.sendFile(__dirname + '/weekday.html');
+    currentDay = "Weekday";
+    res.render('players', {dayValue: currentDay});
   }
 })
 
