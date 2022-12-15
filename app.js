@@ -4,7 +4,7 @@ const port = 3000;
 const app = express();
 
 let item = "";
-let items = [];
+let items = ["List item 1", "List item 2", "List item 3"];
 
 app.set('view engine', 'ejs');
 
@@ -30,7 +30,6 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
   item = req.body.newItem;
-
   items.push(item);
 
   res.redirect("/");

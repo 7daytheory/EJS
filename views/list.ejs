@@ -15,7 +15,9 @@
         <button type="submit">Submit</button>
       </form>
       <ul>
-        <li><%= newlistItem %></li>
+        <% for(let i = 0; i < newlistItem.length; i++) { %>
+          <li style="list-style-type: none;"><%= newlistItem[i] %></li>  
+        <% } %>
       </ul>
 </body>
 </html>
